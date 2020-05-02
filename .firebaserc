@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "my-store-dcd8e": {
+      "hosting": {
+        "my-first-project": [
+          "my-store-dcd8e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "my-store-dcd8e"
+  }
+}
