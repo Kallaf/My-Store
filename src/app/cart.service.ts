@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { AngularFireFunctions } from '@angular/fire/functions';
+import { ConstantPool } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class CartService {
   items = [];
 
   constructor(
-    private http: HttpClient
+    private fns: AngularFireFunctions
   ) {}
 
   addToCart(product) {
@@ -26,7 +27,8 @@ export class CartService {
   }
 
   getShippingPrices() {
-    return this.http.get('/assets/shipping.json');
+    const shippingPrices = this.fns.httpsCallable('getShippingPrices');
+    return shippingPrices({}).toPromise() ;
   }
 
 }
